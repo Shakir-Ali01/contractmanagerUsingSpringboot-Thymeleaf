@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  
+th:replace="normal/base::layout(~{::section})">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><span th:text="${title}"></span></title>
+  </head>
+  <body>
+<!--header start-->
+<section>
+  
+  <div class="card ">
+     <div class="body">
+     <!--Alert Message Box-->
+   
+       <h3 class="text-center">Update Your Profile</h3>
+       <div class="container-fluid mt-1">
+         <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+          
+               <form action="#" th:action="@{/user/process-user-profile-update}" th:object="${user}" enctype="multipart/form-data" method="post"class="m-2">
+                  <!-- First Name-->
+                  <input type="hidden" th:value="${user.id}" name="id">                  <div class="input-group">
+					    <div class="input-group-prepend">
+					    </div>
+					      <div class="input-group-text">
+					        <i class="fa fa-plus"></i>
+					    </div>
+					    <input th:value="${user.name}" type="text" id="firstName" name="name" placeholder="Enter Your Name Here"
+					    class="form-control" required>
+				  </div>
+				     <!-- Second Name-->
+                  
+				     <!-- Phone-->
+                 
+				     <!-- work-->
+                  
+				    <!-- Email-->
+                  <div class="input-group mt-3">
+					    <div class="input-group-prepend">
+					    </div>
+					      <div class="input-group-text">
+					        @
+					    </div>
+					    <input th:value="${user.email}" type="email" id="email" name="email" placeholder="Update Your Email Here"
+					    class="form-control" required>
+				  </div>
+				  <!-- TextArea Field-->
+				  <div class="input-group mt-3">
+					    <textarea th:text="${user.about}" rows="5"  id="mytextarea" name="about" placeholder="Write Contact Description Here"
+					    class="form-control"></textarea>
+				  </div>
+				  <!--contact Image-->
+				  <div class="container">
+				      <img class="img-fluid my_profile_picture" src="" th:src="@{'/img/'+${user.ImageUrl}}"  style="height: 150px; width:150px;">
+				  </div>
+				  <p class="text-secondary text-left">Choose a New File</p>
+				   <div class="custom-file ">
+				      <input type="file" class="form-control" name="image_url">
+				   </div>
+				   <!---->
+				   <div class="container text-center mt-3">
+				      <button class="btn btn-outline-primary">Update Profile</button>
+				   </div>
+               </form>
+            </div>
+         </div>
+       </div>
+     </div>
+  </div>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+    <script>
+    ClassicEditor
+        .create( document.querySelector( '#mytextarea' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+</section>
+<!--Header End-->
+  </body>
+</html>
